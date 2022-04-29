@@ -1,0 +1,23 @@
+[
+    {
+        "id":1,
+        "name": "Scarlett",
+        "petName":"Jackson",
+        "petType":"dog",
+        "reasonForLastVisit":"Deworming"
+    },
+    {   
+        "id":2,
+        "name": "Ellie",
+        "petName":"Clover",
+        "petType":"cat",
+        "reasonForLastVisit":"Checkup"
+    },
+    {   
+        "id":3,
+        "name": "Bart",
+        "petName":"Santa's Little Helper",
+        "petType":"dog",
+        "reasonForLastVisit":"quadruplets"
+    }
+]
