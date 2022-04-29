@@ -2,8 +2,6 @@ import flask
 from flask import request, jsonify, Flask
 import json
 
-from pkg_resources import safe_extra
-
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 
@@ -41,17 +39,17 @@ def customersAll():
 def customersById():
     for item in customersData:
         if item['id'] == request.args:
-            return (jsonify(item))
+            results.append(jsonify(item))
         else:
             return "No customer with that ID"
-    '''
+    
     results = []
- 
+  
     for Customer in customersData:
         if Customer['id'] == id:
             results.append(Customer)
 
-    return jsonify(results)'''
+    return jsonify(results)
 
 if __name__=='__main__':
     app.run()
