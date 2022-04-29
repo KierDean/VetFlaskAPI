@@ -2,13 +2,15 @@ import flask
 from flask import request, jsonify, Flask
 import json
 
+from pkg_resources import safe_extra
+
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 
 file = open('vetcustomers.txt', 'r')
 customersData = json.load(file)
-print(customersData)
 
+'''
 Customers = [
     {"id":1,
      "name": "Scarlett",
@@ -25,7 +27,7 @@ Customers = [
      "petName":"Santa's Little Helper",
      "petType":"dog",
      "reasonForLastVisit":"quadruplets"}
-]
+]'''
 
 @app.route('/', methods=['GET'])
 def home():
@@ -33,23 +35,23 @@ def home():
 
 @app.route('/api/customers/all', methods=['GET'])
 def customersAll():
-    return jsonify(Customers)
+    return jsonify(customersData)
 
 @app.route('/api/customers', methods=['GET'])
 def customersById():
-    i=0
-    if 'id' in request.args:
-        id = int(request.args['id'])
-    else:
-        return "No customer with that ID"
-    
+    for item in customersData:
+        if item['id'] == request.args:
+            return (jsonify(item))
+        else:
+            return "No customer with that ID"
+    '''
     results = []
  
-    for Customer in Customers:
+    for Customer in customersData:
         if Customer['id'] == id:
             results.append(Customer)
 
-    return jsonify(results)
+    return jsonify(results)'''
 
 if __name__=='__main__':
     app.run()
